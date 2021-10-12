@@ -10,6 +10,7 @@ const uid2 = require("uid2");
 const cloudinary = require("cloudinary").v2;
 
 const User = require("./models/User");
+const isAuthenticated = require("./middlewares/isAuthenticated");
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -121,6 +122,58 @@ app.get("/characters", async (req, res) => {
     );
     // console.log(response.data);
     res.json(response.data);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+app.post(
+  "/favorites/characters/add_delete",
+  isAuthenticated,
+  async (req, res) => {
+    try {
+      const user = req.user;
+      let favorite = 0;
+      for (let i = 0; i < user.favorites.characters.length; i++) {
+        if (user.favorites.characters[i] === req.fields.id) {
+          favorite++;
+          user.favorites.characters.splice(i, 1);
+          await user.save();
+          break;
+        } else {
+          continue;
+        }
+      }
+      if (!favorite) {
+        user.favorites.characters.push(req.fields.id);
+        await user.save();
+      }
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  }
+);
+
+app.post("/favorites/comics/add_delete", isAuthenticated, async (req, res) => {
+  try {
+    const user = req.user;
+    let favorite = 0;
+    for (let i = 0; i < user.favorites.comics.length; i++) {
+      if (user.favorites.comics[i] === req.fields.id) {
+        favorite++;
+        user.favorites.comics.splice(i, 1);
+        await user.save();
+        break;
+      } else {
+        continue;
+      }
+    }
+    if (!favorite) {
+      user.favorites.comics.push(req.fields.id);
+      await user.save();
+    }
+    res.status(200).json(user);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
