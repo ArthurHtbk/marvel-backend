@@ -158,10 +158,10 @@ app.post(
 app.post("/favorites/comics/add_delete", isAuthenticated, async (req, res) => {
   try {
     const user = req.user;
-    let favorite = 0;
+    let favorite = false;
     for (let i = 0; i < user.favorites.comics.length; i++) {
       if (user.favorites.comics[i] === req.fields.id) {
-        favorite++;
+        favorite = true;
         user.favorites.comics.splice(i, 1);
         await user.save();
         break;
