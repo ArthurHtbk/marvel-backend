@@ -133,10 +133,10 @@ app.post(
   async (req, res) => {
     try {
       const user = req.user;
-      let favorite = 0;
+      let favorite = false;
       for (let i = 0; i < user.favorites.characters.length; i++) {
         if (user.favorites.characters[i] === req.fields.id) {
-          favorite++;
+          favorite = true;
           user.favorites.characters.splice(i, 1);
           await user.save();
           break;
