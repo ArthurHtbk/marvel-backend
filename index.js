@@ -179,6 +179,42 @@ app.post("/favorites/comics/add_delete", isAuthenticated, async (req, res) => {
   }
 });
 
+app.post(
+  "/favorites/characters/isFavorite",
+  isAuthenticated,
+  async (req, res) => {
+    try {
+      const user = req.user;
+      let favorite = false;
+      for (let i = 0; i < user.favorites.characters.length; i++) {
+        if (user.favorites.characters[i] === req.fields.id) {
+          favorite = true;
+          break;
+        }
+      }
+      res.json(favorite);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  }
+);
+
+app.post("/favorites/comics/isFavorite", isAuthenticated, async (req, res) => {
+  try {
+    const user = req.user;
+    let favorite = false;
+    for (let i = 0; i < user.favorites.comics.length; i++) {
+      if (user.favorites.comics[i] === req.fields.id) {
+        favorite = true;
+        break;
+      }
+    }
+    res.json(favorite);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 app.all("*", (req, res) => {
   res.status(404).json({ message: "Page not found" });
 });
