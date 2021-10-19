@@ -215,6 +215,46 @@ app.post("/favorites/comics/isFavorite", isAuthenticated, async (req, res) => {
   }
 });
 
+app.get("/favorites/characters", isAuthenticated, async (req, res) => {
+  try {
+    const user = req.user;
+    const favChar = [];
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.MARVEL_API_KEY}`
+    );
+    for (let i = 0; i < response.data.results.length; i++) {
+      for (let j = 0; j < user.favorites.characters.length; j++) {
+        if (response.data.results[i]._id === user.favorites.characters[j]) {
+          favChar.push(response.data.results[i]);
+        }
+      }
+    }
+    res.status(200).json(favChar);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+app.get("/favorites/comics", isAuthenticated, async (req, res) => {
+  try {
+    const user = req.user;
+    const favCom = [];
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.MARVEL_API_KEY}`
+    );
+    for (let i = 0; i < response.data.results.length; i++) {
+      for (let j = 0; j < user.favorites.comics.length; j++) {
+        if (response.data.results[i]._id === user.favorites.comics[j]) {
+          favCom.push(response.data.results[i]);
+        }
+      }
+    }
+    res.status(200).json(favCom);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 app.all("*", (req, res) => {
   res.status(404).json({ message: "Page not found" });
 });
