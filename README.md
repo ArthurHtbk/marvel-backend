@@ -19,7 +19,7 @@ Create an account.
 
 ### /user/login (POST)
 
-Log into user's account
+Log into user's account.
 
 | Body       | Description          |
 | ---------- | -------------------- |
@@ -46,7 +46,7 @@ Get a list of comics featuring a specific character.
 
 ### /comics (GET)
 
-Get a list of comics
+Get a list of comics.
 
 | Query    | Required | Description                       |
 | -------- | -------- | --------------------------------- |
@@ -57,7 +57,7 @@ Get a list of comics
 
 ### /character (GET)
 
-Get a list of characters
+Get a list of characters.
 
 | Query    | Required | Description                           |
 | -----    | -------- | ------------------------------------- |
