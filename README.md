@@ -167,5 +167,5 @@ Get user's list of favorite comics, no queries or params needed.
 
 ## Check this out!
 
-- **[My portfolio](https://focused-leavitt-6e6137.netlify.app/)**
+- **[My Marvel tribute](https://focused-leavitt-6e6137.netlify.app/)**
 - **The corresponding [front-end repository](https://github.com/ArthurHtbk/marvel-frontend)**
