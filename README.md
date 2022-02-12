@@ -2,7 +2,6 @@
 
 Welcome to the back-end repository of my Marvel tribute!
 
-
 ## How to use
 
 ### /user/signup (POST)
@@ -16,7 +15,6 @@ Create an account.
 | `username` | Required | User's username        |
 | `picture`  |          | User's profile picture |
 
-
 ### /user/login (POST)
 
 Log into user's account.
@@ -25,7 +23,6 @@ Log into user's account.
 | ---------- | -------------------- |
 | `email`    | User's email address |
 | `password` | User's password      |
-
 
 ### /comics/:characterId (GET)
 
@@ -43,7 +40,6 @@ Get a list of comics featuring a specific character.
 | -------- | -------- | ----------- |
 | `apiKey` | Yes      | API key     |
 
-
 ### /comics (GET)
 
 Get a list of comics.
@@ -54,23 +50,21 @@ Get a list of comics.
 | `skip`   | No       | Number of results to ignore       |
 | `title`  | No       | Search entry for a specific comic |
 
-
 ### /character (GET)
 
 Get a list of characters.
 
 | Query    | Required | Description                           |
-| -----    | -------- | ------------------------------------- |
+| -------- | -------- | ------------------------------------- |
 | `apiKey` | Yes      | API key                               |
 | `skip`   | No       | Number of results                     |
 | `name`   | No       | Search entry for a specific character |
-
 
 ### /favorites/characters/add_delete (POST)
 
 Add or delete a character from user's list of favorite characters.
 
-#### Headers 
+#### Headers
 
 | Header  | Description  |
 | ------- | ------------ |
@@ -81,7 +75,6 @@ Add or delete a character from user's list of favorite characters.
 | Body | Description             |
 | ---- | ----------------------- |
 | `id` | Character's database id |
-
 
 ### /favorites/comics/add_delete (POST)
 
@@ -99,7 +92,6 @@ Add or delete a comic from user's list of favorite comics.
 | ---- | ------------------- |
 | `id` | Comic's database id |
 
-
 ### /favorites/characters/isFavorite (POST)
 
 Determine if a specific character is featured in user's list of favorite characters.
@@ -116,7 +108,6 @@ Determine if a specific character is featured in user's list of favorite charact
 | ---- | ----------------------- |
 | `id` | Character's database id |
 
-
 ### /favorites/comics/isFavorite (POST)
 
 Determine if a specific comic is featured in user's list of favorite comics.
@@ -127,12 +118,11 @@ Determine if a specific comic is featured in user's list of favorite comics.
 | ------- | ------------ |
 | `token` | User's token |
 
-#### Body 
+#### Body
 
 | Body | Description         |
 | ---- | ------------------- |
 | `id` | Comic's database id |
-
 
 ### /favorites/characters (GET)
 
@@ -142,7 +132,6 @@ Get user's list of favorite characters, no queries or params needed.
 | ------- | ------------ |
 | `token` | User's token |
 
-
 ### /favorites/comics (GET)
 
 Get user's list of favorite comics, no queries or params needed.
@@ -150,7 +139,6 @@ Get user's list of favorite comics, no queries or params needed.
 | Header  | Description  |
 | ------- | ------------ |
 | `token` | User's token |
-
 
 ## Packages & dependencies
 
@@ -164,8 +152,7 @@ Get user's list of favorite comics, no queries or params needed.
 - [Mongoose](https://www.npmjs.com/package/mongoose)
 - [uid2](https://www.npmjs.com/package/uid2)
 
-
 ## Check this out!
 
-- **[My Marvel tribute](https://focused-leavitt-6e6137.netlify.app/)**
-- **The corresponding [front-end repository](https://github.com/ArthurHtbk/marvel-frontend)**
+- **[My Marvel tribute](https://marvel-tribute-arthur.netlify.app)**
+- \*\*The corresponding [front-end repository](https://github.com/ArthurHtbk/marvel-frontend)
